@@ -10,14 +10,6 @@ function [barStr] = progBar2Str(progBar)
     % weird if the output is displayed on screen via `disp`.
     %
     
-    fields = fieldnames(progBar);
-    
-    if any(strcmp(fields, "msg"))
-        msg = progBar.msg;
-    else
-        msg = '';
-    end
-    
     frac = progBar.current / progBar.total;
     perc = 100 * frac;
     
@@ -31,9 +23,23 @@ function [barStr] = progBar2Str(progBar)
         , ']' ...
         ];
     
-    barStr = sprintf('%s:   %3.0f%%%% %s' ...
-        , msg, perc, bar);
+    
+    barStr = sprintf ...
+        ( '%s%3.0f%%%% %s' ...
+        , getMsgPrefix(progBar)...
+        , perc ...
+        , bar ...
+        );
     
     %     '[////////////_/_/_/_/_/_/_/_/_]'
     
+end
+
+function prefix = getMsgPrefix(progBar)
+    msg = char(progBar.msg);
+    if ~isempty(msg)
+        prefix = sprintf('%s:   ', msg);
+    else
+        prefix = '';
+    end
 end

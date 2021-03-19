@@ -1,9 +1,9 @@
-function [] = dispWithProgBar(str, progBar)
+function [] = dispWithProgBar(progBar, str)
 	%% Author: Julius Koppen
 	% Erasmus Medical Center, Rotterdam, The Netherlands
 	% March 18, 2021
 	%
-	% dispWithProgBar(str, progBar) display output `str` without
+	% dispWithProgBar(progBar, str) display output `str` without
 	% interfering with the active progress bar `progBar`.
     %
     % NOTA BENE: If the progress bar is already done (i.e. the field `done`
@@ -11,7 +11,7 @@ function [] = dispWithProgBar(str, progBar)
     % exactly like `JkDisp`.
 	%
 
-    if isDone(progBar)
+    if progBar.done
         JkUtils.JkDisp(str)
     else
         JkUtils.clearProgBarOutput(progBar);

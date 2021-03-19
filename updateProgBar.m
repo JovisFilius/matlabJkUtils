@@ -6,6 +6,11 @@ function [progBar] = updateProgBar(progBar)
 	% updateProgBar(progBar) increments and visually updates the `progBar`
     % printed on the console.
     %
+    % NB: since it is possible to create arbitrary paths through a loop
+    % construct (via the `continue` statement), it is recommended to call
+    % this function as the first statement inside a for loop and once
+    % directly after the loop has finished.
+    %
     % NOTA BENE: this function relies on the assumption that the last thing
     % that has been printed before was the previous iteration of `progBar`,
     % without a newline apended. It outputs as many backspaces as needed to
@@ -13,27 +18,33 @@ function [progBar] = updateProgBar(progBar)
     % progress bar.
 	%
     
-    if progBar.current < progBar.total
+    if ~progBar.started
+
+        progBar = start(progBar);
+        JkUtils.dispProgBar(progBar);
+    
+    elseif progBar.current < progBar.total - 1
         
         progBar = JkUtils.progBarTick(progBar);
         
         JkUtils.clearProgBarOutput(progBar);
         JkUtils.dispProgBar(progBar);
         
-    elseif ~isDone(progBar)
+    elseif ~progBar.done
    
-        progBar = finish(progBar);
+        progBar = finish(JkUtils.progBarTick(progBar));
+        JkUtils.clearProgBarOutput(progBar);
+        JkUtils.dispProgBar(progBar);
         fprintf('\n')
-        
+
     end
     
 end
 
-function bool = isDone(progBar)
-    fields = fieldnames(progBar);
-    bool = any(strcmp(fields, "done"));
+function progBar = start(progBar)
+    progBar.started = true;
 end
 
 function progBar = finish(progBar)
-    progBar.done = 1;
+    progBar.done = true;
 end
