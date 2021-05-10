@@ -8,10 +8,11 @@ function [bar] = progBar(totalSteps, dispLength, msg)
     % `totalSteps + 2` and 25. The displayed message defaultsSee the bottom references for info on how to use
     % the progress bar.
     %
-    % bar = progBar(totalSteps, dispLength) creates
+    % bar = progBar(totalSteps, dispLength) creates a progress bar that is
+    % displayed with `dispLength` characters.
     %
-    % See also JkUtils.dispProgBar, JkUtils.updateProgBar,
-    % JkUtils.dispWithProgBar, JkUtils.progBarTick, JkUtils.resetProgBar
+    % See also JkUtils.updateProgBar, JkUtils.dispWithProgBar,
+    % JkUtils.dispProgBar, JkUtils.progBarTick, JkUtils.resetProgBar
     
     if nargin < 2
         dispLength = min(totalSteps+2, 25);

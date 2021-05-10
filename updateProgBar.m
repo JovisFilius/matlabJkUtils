@@ -15,8 +15,11 @@ function [progBar] = updateProgBar(progBar)
     % that has been printed before was the previous iteration of `progBar`,
     % without a newline apended. It outputs as many backspaces as needed to
     % erase the previous output to create a `seemingly interactive` updated
-    % progress bar.
-	%
+    % progress bar. To display output inbetween progress bar updates, use
+    % `JkUtils.dispWithProgBar`.
+    %
+	% See also JkUtils.dispWithProgBar, JkUtils.resetProgBar, 
+    % JkUtils.dispProgBar, JkUtils.progBarTick
     
     if ~progBar.started
 

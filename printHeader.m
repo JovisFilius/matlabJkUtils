@@ -9,6 +9,9 @@ function [out] = printHeader(in)
 
     JkUtils.assertStringScalar(in);
     
-    out = sprintf("----------- %s -----------", in);
+    out = JkUtils.printIndented ...
+        ( sprintf("------------- %s -------------\n\n", in) ...
+        , '      ' ...
+        );
 
 end

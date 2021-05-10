@@ -1,4 +1,4 @@
-function res = do_prompt_yes_or_no(questionMsg)
+function bool = do_prompt_yes_or_no(questionMsg)
     %% Author: Julius Koppen
     % Erasmus Medical Center, Rotterdam, The Netherlands
     % March 16, 2021
@@ -11,7 +11,7 @@ function res = do_prompt_yes_or_no(questionMsg)
     % causes the program to return immediately by throwing an error.
     
     prompt = sprintf ...
-        ( "%s\nEnter 'y' to continue or 'n' to quit [y/n]: " ...
+        ( "%s\nPlease enter a response [y/n]: " ...
         , questionMsg ...
         );
     
@@ -26,5 +26,7 @@ function res = do_prompt_yes_or_no(questionMsg)
         JkUtils.JkDisp(sprintf("%s is not a valid response", res));
         res = input(prompt, 's');
     end
+    
+    bool = strcmp(res, 'y');
     
 end

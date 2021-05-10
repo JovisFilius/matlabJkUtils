@@ -9,6 +9,10 @@ function [outStr] = printValue(inStr)
     
     JkUtils.assertStringScalar(inStr)
     
+    if isnumeric(inStr)
+        inStr = string(inStr);
+    end
+    
     outStr = string( ...
         [ '`' ...
         , char(inStr) ...
@@ -17,6 +21,4 @@ function [outStr] = printValue(inStr)
         );
     
     
-
-
 end

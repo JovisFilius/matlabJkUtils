@@ -1,4 +1,4 @@
-function res = do_prompt_numericRange_or_quit(mn, mx)
+function res = do_prompt_numericRange(mn, mx)
     %% Author: Julius Koppen
     % Erasmus Medical Center, Rotterdam, The Netherlands
     % March 5, 2021
@@ -11,7 +11,7 @@ function res = do_prompt_numericRange_or_quit(mn, mx)
     % causes the program to return immediately by throwing an error.
     
     prompt = sprintf ...
-        ( "Please type a valid index or ctrl-c to quit [%d-%d]: " ...
+        ( "Please type a valid index [%d-%d]: " ...
         , mn, mx ...
         );
     

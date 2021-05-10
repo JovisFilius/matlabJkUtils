@@ -1,5 +1,5 @@
 function [] = JkDisp(str)
 
-    fprintf("\n%s\n\n",str);
+    fprintf("\n%s\n",str);
     
 end
