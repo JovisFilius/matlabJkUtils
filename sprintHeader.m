@@ -1,4 +1,4 @@
-function [out] = sprintHeader(in)
+function [out] = sprintHeader(varargin)
 	%% Author: Julius Koppen
 	% Erasmus Medical Center, Rotterdam, The Netherlands
 	% March 17, 2021
@@ -7,7 +7,9 @@ function [out] = sprintHeader(in)
 	% pretty-print format to indicate a header.
 	%
 
-    JkUtils.assertStringScalar(in);
+    JkUtils.assertStringScalar(varargin{1});
+    
+    in = sprintf(varargin{:});
     
     out = JkUtils.sprintIndented ...
         ( sprintf("------------- %s -------------\n\n", in) ...

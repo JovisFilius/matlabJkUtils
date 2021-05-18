@@ -1,4 +1,4 @@
-function [outStr] = sprintValue(inStr)
+function [outStr] = sprintValue(varargin)
 	%% Author: Julius Koppen
 	% Erasmus Medical Center, Rotterdam, The Netherlands
 	% March 17, 2021
@@ -7,7 +7,9 @@ function [outStr] = sprintValue(inStr)
 	% that the string contains some symbolic value.
 	%
     
-    JkUtils.assertStringScalar(inStr)
+    JkUtils.assertStringScalar(varargin{1})
+    
+    inStr = sprintf(varargin{:});
     
     if isnumeric(inStr)
         inStr = string(inStr);

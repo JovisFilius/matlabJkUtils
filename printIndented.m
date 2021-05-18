@@ -8,18 +8,6 @@ function [] = printIndented(varargin)
     % default of 4 spaces is used.
 	%
     % See also JkUtils.sprintIndented, JkUtils.JkPrint
-
-    indent = '    ';
-    if nargin > 1
-        for i = 2:(numel(varargin) - 1)
-            if strcmpi(varargin{i}, 'indent') ...
-                    && JkUtils.is_single_string(varargin{i+1})
-                indent = varargin{i+1};
-                varargin = {varargin{1:i-1} varargin{i+2:end}};
-                break;
-            end
-        end
-    end
     
-    JkUtils.JkPrint(varargin{:}, @(x) JkUtils.sprintIndented(x,'indent', indent))
+    JkUtils.JkPrint(varargin{:}, @JkUtils.sprintIndented)
 end

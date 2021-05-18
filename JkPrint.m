@@ -14,26 +14,27 @@ function [] = JkPrint(varargin)
     % See also fprintf, sprintf
 
     fid = 1;
-
-    if nargin == 1
-        str = varargin{1};
-    elseif nargin > 1
+    formatFunc = @sprintf;
+    
+    if nargin > 1
         if isnumeric(varargin{1})
             fid = varargin{1};
             varargin = varargin(2:end);
         end
         if isa(varargin{end}, 'function_handle')
+            % Allows calling this function with arbitrary args from each of
+            % the JkUtils.print* functions
             formatFunc = varargin{end};
             varargin = varargin(1:end-1);
-        else
-            formatFunc = @(x) x; % identity function
         end
-        if numel(varargin) > 1
-            str = formatFunc(sprintf(varargin{1}, varargin{2:end}));
-        else
-            str = formatFunc(varargin{1});
-        end
+%         if numel(varargin) > 1
+%             str = formatFunc(sprintf(varargin{:}));
+%         else
+%             str = formatFunc(varargin{1});
+%         end
     end
+    
+    str = formatFunc(varargin{:});
 
     fprintf(fid, "\n%s\n", str);
     
