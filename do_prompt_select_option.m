@@ -50,7 +50,7 @@ function [selected, index] = do_prompt_select_option(choices)
         ( "Available choices:\n" ...
         + sprintf("%s\n", choiceList) ...
         );
-    JkUtils.JkDisp(JkUtils.printIndented(msg, '    '))
+    JkUtils.printIndented(msg, '    ')
     index = JkUtils.do_prompt_numericRange(1,N);
 
     selected = choices(index);

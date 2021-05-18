@@ -23,7 +23,7 @@ function bool = do_prompt_yes_or_no(questionMsg)
     res = input(prompt, 's');
   
     while ~is_y_or_n(res)
-        JkUtils.JkDisp(sprintf("%s is not a valid response", res));
+        JkUtils.JkPrintf("%s is not a valid response", res);
         res = input(prompt, 's');
     end
     

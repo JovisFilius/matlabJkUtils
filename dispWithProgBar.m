@@ -12,10 +12,10 @@ function [] = dispWithProgBar(progBar, str)
 	%
 
     if progBar.done
-        JkUtils.JkDisp(str)
+        JkUtils.JkPrint(str)
     else
         JkUtils.clearProgBarOutput(progBar);
-        JkUtils.JkDisp(str);
+        JkUtils.JkPrint(str);
         JkUtils.dispProgBar(progBar);
     end
     

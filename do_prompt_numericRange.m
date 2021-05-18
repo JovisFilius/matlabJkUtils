@@ -23,7 +23,7 @@ function res = do_prompt_numericRange(mn, mx)
     res = str2double(raw);
   
     while ~is_valid_index(res)
-        JkUtils.JkDisp(sprintf("%s is not a valid response", raw));
+        JkUtils.JkPrint("%s is not a valid response", raw);
         raw = input(prompt, 's');
         res = str2double(raw);
     end

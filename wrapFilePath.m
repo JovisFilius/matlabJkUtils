@@ -1,9 +1,9 @@
-function [ strOut ] = JkdispFilePath(pathStr, prefix, lineLength, ellipsis)
+function [ strOut ] = wrapFilePath(pathStr, prefix, lineLength, ellipsis)
     %% Author: Julius Koppen
     % Erasmus Medical Center, Rotterdam, The Netherlands
     % March 17, 2021
     %
-    % JkdispFilePath(pathStr) breaks strings containing file paths at the
+    % wrapFilePath(pathStr) breaks strings containing file paths at the
     % folder separator `/` before they exceed 75 characters. The resulting
     % strings to be displayed on multiple lines are shown with an ellipsis
     % (i.e. `...`) to indicate line continuation. The entire result is
