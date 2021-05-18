@@ -1,17 +1,13 @@
-function [out] = printHeader(in)
+function [] = printHeader(varargin)
 	%% Author: Julius Koppen
 	% Erasmus Medical Center, Rotterdam, The Netherlands
 	% March 17, 2021
 	%
-	% out = printHeader(in) returns the scalar string `in` wrapped in a
-	% pretty-print format to indicate a header.
+	% out = printHeader(in) prints the scalar string `in` wrapped in a
+	% pretty-print format to indicate a header by using sprintHeader
 	%
+    % See also JkUtils.sprintHeader
 
-    JkUtils.assertStringScalar(in);
-    
-    out = JkUtils.printIndented ...
-        ( sprintf("------------- %s -------------\n\n", in) ...
-        , '      ' ...
-        );
+    JkUtils.JkPrint(varargin{:}, @JkUtils.sprintHeader)
 
 end

@@ -1,24 +1,13 @@
-function [outStr] = printValue(inStr)
+function [outStr] = printValue(varargin)
 	%% Author: Julius Koppen
 	% Erasmus Medical Center, Rotterdam, The Netherlands
 	% March 17, 2021
 	%
-	% printValue(inStr) flanks `inStr` in backquotes to clearly indicate
-	% that the string contains some symbolic value.
+	% printValue(inStr) prints the output of sprintValue(inStr) via JkPrint
 	%
+    % See also JkUtils.sprintValue, JkUtils.JkPrint
     
-    JkUtils.assertStringScalar(inStr)
-    
-    if isnumeric(inStr)
-        inStr = string(inStr);
-    end
-    
-    outStr = string( ...
-        [ '`' ...
-        , char(inStr) ...
-        , '`'
-        ] ...
-        );
+    JkUtils.JkPrint(varargin{:}, @JkUtils.sprintValue)
     
     
 end
