@@ -29,7 +29,7 @@ function [] = checkFolder_do_prompt_create_new(path)
                 if ~succ
                     error(errId, errMsg)
                 else
-                    JkUtils.printIndented("Folder created.", '    '))
+                    JkUtils.printIndented("Folder created.", '    ')
                 end
             else
                 % Folder did not exist and user did not want to create it
